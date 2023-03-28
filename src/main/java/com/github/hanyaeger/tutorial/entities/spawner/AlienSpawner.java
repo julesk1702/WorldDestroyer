@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
 import com.github.hanyaeger.tutorial.WorldDestroyers;
 import com.github.hanyaeger.tutorial.entities.AlienEnemy;
+import com.github.hanyaeger.tutorial.entities.text.ScoreText;
 
 import java.util.Random;
 
@@ -14,6 +15,7 @@ public class AlienSpawner extends EntitySpawner {
     private final int MAX_ALIENS = 20;
     private int alienCount = 0;
     private WorldDestroyers worldDestroyers;
+
     public AlienSpawner(double sceneWidth, double sceneHeight, WorldDestroyers worldDestroyers) {
         super(1);
         this.sceneWidth = sceneWidth;
@@ -28,7 +30,7 @@ public class AlienSpawner extends EntitySpawner {
                 newLocation = new Coordinate2D(randomXlocation(), randomYlocation());
             } while (isTooCloseToanotherAlien(newLocation));
 
-            spawn(new AlienEnemy(newLocation, worldDestroyers));
+            spawn(new AlienEnemy(newLocation, worldDestroyers, new ScoreText(new Coordinate2D(100, 100))));
             alienCount++;
         }
     }

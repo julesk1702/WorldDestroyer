@@ -7,6 +7,7 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.tutorial.WorldDestroyers;
+import com.github.hanyaeger.tutorial.entities.text.ScoreText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +15,17 @@ import java.util.List;
 public class AlienEnemy extends DynamicSpriteEntity implements Collided {
 
     private static List<AlienEnemy> aliens = new ArrayList<>();
+    private ScoreText scoreText;
+    private int score = 0;
     private WorldDestroyers worldDestroyers;
 
-    public AlienEnemy(Coordinate2D initialLocation, WorldDestroyers worldDestroyers) {
+    public AlienEnemy(Coordinate2D initialLocation, WorldDestroyers worldDestroyers, ScoreText scoreText) {
         super("sprites/alien.png", initialLocation, new Size(50, 60));
         aliens.add(this);
         this.worldDestroyers = worldDestroyers;
+        this.scoreText = scoreText;
+        scoreText.setScore(score);
+
     }
 
     public static List<AlienEnemy> getAliens() {
@@ -41,6 +47,8 @@ public class AlienEnemy extends DynamicSpriteEntity implements Collided {
                 bullet.remove();
                 aliens.remove(this);
                 goToGameOverScene();
+                score++;
+                scoreText.setScore(score);
             }
         }
     }
@@ -51,8 +59,12 @@ public class AlienEnemy extends DynamicSpriteEntity implements Collided {
 
     public void goToGameOverScene() {
         if (AlienEnemy.getAliens().isEmpty()) {
-            worldDestroyers.setActiveScene(2);
+            worldDestroyers.setActiveScene(1);
         }
+    }
+
+    public int getScore(){
+        return score;
     }
 }
 
