@@ -44,7 +44,6 @@ public class Tank extends DynamicSpriteEntity implements KeyListener, SceneBorde
     }
 
     public Coordinate2D getAnchorLocation(){
-        System.out.println(getLocationInScene());
         return getLocationInScene();
     }
 

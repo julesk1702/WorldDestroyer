@@ -9,15 +9,30 @@ import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class Bullet extends DynamicSpriteEntity implements Collider {
     boolean keyPressed = false;
-    public Bullet(Coordinate2D initialLocation) {
+    private List<Bullet> bullets = new ArrayList<>();
+    private boolean isPlayerBullet;
+
+    public Bullet(Coordinate2D initialLocation, boolean isPlayerBullet) {
         super("sprites/bullet.png", initialLocation, new Size(30, 30));
-        setMotion(5, 180d);
         var shootingSound = new SoundClip("audio/shooting.mp3");
         shootingSound.play();
+        this.isPlayerBullet = isPlayerBullet;
+        if (!isPlayerBullet) {
+            setMotion(5, 0d);
+        } else {
+            setMotion(5, 180d);
+        }
+        bullets.add(this);
 
+    }
+
+    public boolean getIsPlayerBullet() {
+        return isPlayerBullet;
     }
 }
