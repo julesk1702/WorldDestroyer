@@ -18,8 +18,8 @@ public class Bullet extends DynamicSpriteEntity implements Collider {
     private List<Bullet> bullets = new ArrayList<>();
     private boolean isPlayerBullet;
 
-    public Bullet(Coordinate2D initialLocation, boolean isPlayerBullet) {
-        super("sprites/bullet.png", initialLocation, new Size(30, 30));
+    public Bullet(String resource , Coordinate2D initialLocation, boolean isPlayerBullet) {
+        super(resource, initialLocation, new Size(30, 30));
         var shootingSound = new SoundClip("audio/shooting.mp3");
         shootingSound.play();
         this.isPlayerBullet = isPlayerBullet;
@@ -35,4 +35,6 @@ public class Bullet extends DynamicSpriteEntity implements Collider {
     public boolean getIsPlayerBullet() {
         return isPlayerBullet;
     }
+
+
 }

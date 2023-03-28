@@ -19,7 +19,7 @@ public class AlienEnemy extends DynamicSpriteEntity implements Collided {
     private int score = 0;
     private WorldDestroyers worldDestroyers;
 
-    public AlienEnemy(Coordinate2D initialLocation, WorldDestroyers worldDestroyers, ScoreText scoreText) {
+    public AlienEnemy(Coordinate2D initialLocation, WorldDestroyers worldDestroyers) {
         super("sprites/alien.png", initialLocation, new Size(50, 60));
         aliens.add(this);
         this.worldDestroyers = worldDestroyers;
@@ -37,18 +37,16 @@ public class AlienEnemy extends DynamicSpriteEntity implements Collided {
         boolean checkBoolean = false;
         //System.out.println("Collision alien");
         var explosion = new SoundClip("audio/explosion2.mp3");
-        if (collidingObject instanceof Bullet) {
-            Bullet bullet = (Bullet) collidingObject;
+        if (collidingObject instanceof Bullet bullet) {
             checkBoolean = bullet.getIsPlayerBullet();
 
             if (checkBoolean) {
+                score++;
                 explosion.play();
                 remove();
                 bullet.remove();
                 aliens.remove(this);
                 goToGameOverScene();
-                score++;
-                scoreText.setScore(score);
             }
         }
     }

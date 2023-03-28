@@ -35,7 +35,7 @@ public class BulletSpawner extends EntitySpawner{
             int randomIndex = random.nextInt(aliens.size());
             AlienEnemy alien = aliens.get(randomIndex);
             if (shootBullet) {
-                spawn(new Bullet(alien.getAnchorLocation(), false)); // spawn a bullet
+                spawn(new Bullet("sprites/bullet2.png", alien.getAnchorLocation(), false)); // spawn a bullet
                 shootBullet = false; // increase the amount of bullets
             }
         }
