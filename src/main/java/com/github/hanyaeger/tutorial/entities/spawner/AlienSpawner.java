@@ -15,12 +15,14 @@ public class AlienSpawner extends EntitySpawner {
     private final int MAX_ALIENS = 20;
     private int alienCount = 0;
     private WorldDestroyers worldDestroyers;
+    private ScoreText scoreText;
 
     public AlienSpawner(double sceneWidth, double sceneHeight, WorldDestroyers worldDestroyers) {
         super(1);
         this.sceneWidth = sceneWidth;
         this.sceneHeight = sceneHeight;
         this.worldDestroyers = worldDestroyers;
+        this.scoreText = scoreText;
     }
     @Override
     protected void spawnEntities() {
@@ -30,7 +32,7 @@ public class AlienSpawner extends EntitySpawner {
                 newLocation = new Coordinate2D(randomXlocation(), randomYlocation());
             } while (isTooCloseToanotherAlien(newLocation));
 
-            spawn(new AlienEnemy(newLocation, worldDestroyers, new ScoreText(new Coordinate2D(100, 100))));
+            spawn(new AlienEnemy(newLocation, worldDestroyers));
             alienCount++;
         }
     }

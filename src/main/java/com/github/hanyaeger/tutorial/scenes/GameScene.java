@@ -3,6 +3,7 @@ package com.github.hanyaeger.tutorial.scenes;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
@@ -12,6 +13,7 @@ import com.github.hanyaeger.tutorial.entities.Bullet;
 import com.github.hanyaeger.tutorial.entities.Tank;
 import com.github.hanyaeger.tutorial.entities.spawner.AlienSpawner;
 import com.github.hanyaeger.tutorial.entities.spawner.BulletSpawner;
+import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import com.github.hanyaeger.tutorial.entities.text.ScoreText;
 import javafx.scene.input.KeyCode;
 
@@ -33,7 +35,12 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer, K
 
     @Override
     public void setupEntities() {
-        tank = new Tank(new Coordinate2D(100, 510));
+        var health = new HealthText(new Coordinate2D(5, 10));
+        addEntity(health);
+        var score = new ScoreText(new Coordinate2D(5, 30));
+        addEntity(score);
+
+        tank = new Tank(new Coordinate2D(100, 510), health, score, worldDestroyers);
         addEntity(tank);
     }
 
@@ -48,7 +55,7 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer, K
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if (pressedKeys.contains(KeyCode.SPACE)) {
-            addEntity(new Bullet(new Coordinate2D(tank.getAnchorLocation()), true));
+            addEntity(new Bullet("sprites/bullet.png" , new Coordinate2D(tank.getAnchorLocation()), true));
         }
     }
 }

@@ -6,17 +6,28 @@ import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
+import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
+import com.github.hanyaeger.tutorial.WorldDestroyers;
+import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import com.github.hanyaeger.tutorial.entities.text.ScoreText;
 import javafx.scene.input.KeyCode;
 
 import java.util.Set;
 
 public class Tank extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Collided {
+    private WorldDestroyers worldDestroyers;
+    private HealthText healthText;
+    boolean checkBoolean = false;
+    private int health = 5;
+    private int score = 0;
 
-    public Tank(Coordinate2D location) {
-        super("sprites/tank.gif", location, new Size(80, 100), 1, 2);
+    public Tank(Coordinate2D location, HealthText healthText, ScoreText scoreText, WorldDestroyers worldDestroyers) {
+        super("sprites/tank.gif", location, new Size(80, 110), 1, 2);
+        this.worldDestroyers = worldDestroyers;
+        this.healthText = healthText;
+        healthText.setHealth(health);
     }
 
     @Override
@@ -51,6 +62,24 @@ public class Tank extends DynamicSpriteEntity implements KeyListener, SceneBorde
 
     @Override
     public void onCollision(Collider collidingObject) {
-        //System.out.println("Collision");
+        //System.out.println("Collision alien");
+        var explosion = new SoundClip("audio/explosion.mp3");
+        if (collidingObject instanceof Bullet bullet) {
+            checkBoolean = bullet.getIsPlayerBullet();
+
+            if (!checkBoolean) {
+                healthText.setHealth(--health);
+                explosion.play();
+                bullet.remove();
+                if (health == 0) {
+                    remove();
+                    goToGameOverScene();
+                }
+            }
+        }
+    }
+
+    public void goToGameOverScene() {
+        worldDestroyers.setActiveScene(2);
     }
 }
