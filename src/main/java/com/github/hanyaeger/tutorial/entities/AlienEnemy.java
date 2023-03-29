@@ -15,7 +15,6 @@ import java.util.List;
 public class AlienEnemy extends DynamicSpriteEntity implements Collided {
 
     private static List<AlienEnemy> aliens = new ArrayList<>();
-    private ScoreText scoreText;
     private int score = 0;
     private WorldDestroyers worldDestroyers;
 
@@ -23,9 +22,6 @@ public class AlienEnemy extends DynamicSpriteEntity implements Collided {
         super("sprites/alien.png", initialLocation, new Size(50, 60));
         aliens.add(this);
         this.worldDestroyers = worldDestroyers;
-        this.scoreText = scoreText;
-        scoreText.setScore(score);
-
     }
 
     public static List<AlienEnemy> getAliens() {

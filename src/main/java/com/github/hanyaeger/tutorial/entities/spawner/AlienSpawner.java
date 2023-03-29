@@ -22,7 +22,6 @@ public class AlienSpawner extends EntitySpawner {
         this.sceneWidth = sceneWidth;
         this.sceneHeight = sceneHeight;
         this.worldDestroyers = worldDestroyers;
-        this.scoreText = scoreText;
     }
     @Override
     protected void spawnEntities() {
