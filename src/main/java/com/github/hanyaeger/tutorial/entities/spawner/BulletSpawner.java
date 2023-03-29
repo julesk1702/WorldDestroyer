@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.entities.EntitySpawner;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.hanyaeger.tutorial.entities.AlienEnemy;
 import com.github.hanyaeger.tutorial.entities.Bullet;
+import com.github.hanyaeger.tutorial.entities.text.ScoreText;
 import javafx.scene.input.KeyCode;
 
 import java.util.List;
@@ -12,14 +13,16 @@ import java.util.Random;
 import java.util.Set;
 
 public class BulletSpawner extends EntitySpawner{
+    public static final int INTERVAL_IN_MS = 2000;
     private double sceneWidth;
     private double sceneHeight;
     private boolean keyPressed = false;
     private int amountOfBullets = 0;
     private long previousTime;
     private boolean shootBullet = false;
-    public BulletSpawner(double sceneWidth, double sceneHeight) {
-        super(2000);
+
+    public BulletSpawner(double sceneWidth, double sceneHeight ) {
+        super(INTERVAL_IN_MS);
         this.sceneWidth = sceneWidth;
         this.sceneHeight = sceneHeight;
         previousTime = this.getIntervalInMs();

@@ -16,17 +16,22 @@ import javafx.scene.input.KeyCode;
 
 import java.util.Set;
 
-public class Tank extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Collided {
+public class Tank extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Collided, Collider {
     private WorldDestroyers worldDestroyers;
+    private ScoreText scoreText;
     private HealthText healthText;
     boolean checkBoolean = false;
+    boolean gameOver = false;
     private int health = 5;
     private int score = 0;
+    private Exit exit;
+    boolean isOverExit = false;
 
-    public Tank(Coordinate2D location, HealthText healthText, ScoreText scoreText, WorldDestroyers worldDestroyers) {
+    public Tank(Coordinate2D location, HealthText healthText, Exit exit, WorldDestroyers worldDestroyers) {
         super("sprites/tank.gif", location, new Size(80, 110), 1, 2);
         this.worldDestroyers = worldDestroyers;
         this.healthText = healthText;
+        this.exit = exit;
         healthText.setHealth(health);
     }
 
@@ -40,6 +45,10 @@ public class Tank extends DynamicSpriteEntity implements KeyListener, SceneBorde
             setCurrentFrameIndex(1);
         } else if (pressedKeys.isEmpty()){
             setSpeed(0);
+        }
+        if (pressedKeys.contains(KeyCode.G) && isOverExit) {
+            goToGameOverScene();
+            isOverExit = false;
         }
     }
 
@@ -77,9 +86,12 @@ public class Tank extends DynamicSpriteEntity implements KeyListener, SceneBorde
                 }
             }
         }
+        if(collidingObject instanceof Exit exit) {
+            isOverExit = true;
+        }
     }
 
     public void goToGameOverScene() {
-        worldDestroyers.setActiveScene(2);
+            worldDestroyers.setActiveScene(2);
     }
 }

@@ -4,7 +4,6 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
-import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.tutorial.WorldDestroyers;
 import com.github.hanyaeger.tutorial.entities.text.ScoreText;
@@ -12,26 +11,27 @@ import com.github.hanyaeger.tutorial.entities.text.ScoreText;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlienEnemy extends Enemy implements Collided {
-
-    public static final int ID = 2;
+public class StrongEnemy extends Enemy implements Collided {
+    public static final int WIDTH = 60;
+    public static final int HEIGHT = 70;
     public static final int DEAD = 0;
-    public static final int WIDTH = 50;
-    public static final int HEIGHT = 60;
-    private static List<AlienEnemy> aliens = new ArrayList<>();
-
+    public static final int ID = 2;
+    private int health;
     private WorldDestroyers worldDestroyers;
 
-    private int health = ID;
-
-    public AlienEnemy(Coordinate2D initialLocation, WorldDestroyers worldDestroyers) {
-        super("sprites/alien.png", initialLocation, new Size(WIDTH, HEIGHT));
-        aliens.add(this);
+    private static List<StrongEnemy> alienList = new ArrayList<>();
+    public StrongEnemy(Coordinate2D initialLocation, WorldDestroyers worldDestroyers) {
+        super("sprites/notAlien.png", initialLocation, new Size(WIDTH, HEIGHT));
+        alienList.add(this);
         this.worldDestroyers = worldDestroyers;
     }
 
-    public static List<AlienEnemy> getAliens() {
-        return aliens;
+    public static List<StrongEnemy> getAliens() {
+        return alienList;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class AlienEnemy extends Enemy implements Collided {
                     explosion.play();
                     remove();
                     bullet.remove();
-                    aliens.remove(this);
+                    alienList.remove(this);
                     goToGameOverScene();
                 }
             }
@@ -62,13 +62,8 @@ public class AlienEnemy extends Enemy implements Collided {
     }
 
     public void goToGameOverScene() {
-        if (AlienEnemy.getAliens().isEmpty() && StrongEnemy.getAliens().isEmpty()) {
+        if (StrongEnemy.getAliens().isEmpty() && AlienEnemy.getAliens().isEmpty()) {
             worldDestroyers.setActiveScene(ID);
         }
     }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
 }
-
