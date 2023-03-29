@@ -7,6 +7,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class ScoreText extends TextEntity {
+    private int totalScore = 0;
     public ScoreText(Coordinate2D initialLocation) {
         super(initialLocation);
 
@@ -16,5 +17,10 @@ public class ScoreText extends TextEntity {
 
     public void setScore(int score) {
         setText("Score: " + score);
+        totalScore += score;
+    }
+
+    public int getScore() {
+        return totalScore;
     }
 }
