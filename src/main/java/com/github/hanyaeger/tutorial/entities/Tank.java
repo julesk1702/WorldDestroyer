@@ -22,8 +22,9 @@ public class Tank extends DynamicSpriteEntity implements KeyListener, SceneBorde
     private ScoreText scoreText;
     private HealthText healthText;
     boolean checkBoolean = false;
+    boolean keyUnlocked = false;
     boolean gameOver = false;
-    private int health = 5;
+    private int health = 7;
     private int score = 0;
     private Exit exit;
     boolean isOverExit = false;
@@ -66,6 +67,14 @@ public class Tank extends DynamicSpriteEntity implements KeyListener, SceneBorde
         }
     }
 
+    public void setKeyCollect(boolean keyCollect) {
+        this.keyUnlocked = keyCollect;
+    }
+
+    public boolean getKeyCollect() {
+        return keyUnlocked;
+    }
+
     public Coordinate2D getAnchorLocation(){
         return getLocationInScene();
     }
@@ -91,6 +100,7 @@ public class Tank extends DynamicSpriteEntity implements KeyListener, SceneBorde
             isOverExit = true;
         }
     }
+
 
     public void goToGameOverScene() {
             worldDestroyers.setActiveScene(2);

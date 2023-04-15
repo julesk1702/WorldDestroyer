@@ -12,16 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StrongEnemy extends Enemy implements Collided {
-    public static final int WIDTH = 60;
-    public static final int HEIGHT = 70;
-    public static final int DEAD = 0;
-    public static final int ID = 2;
+    public final int WIDTH = 60;
+    public final int HEIGHT = 70;
+    public final int DEAD = 0;
+    public final int ID = 2;
     private int health;
     private WorldDestroyers worldDestroyers;
 
     private static List<StrongEnemy> alienList = new ArrayList<>();
     public StrongEnemy(Coordinate2D initialLocation, WorldDestroyers worldDestroyers) {
-        super("sprites/notAlien.png", initialLocation, new Size(WIDTH, HEIGHT));
+        super("sprites/notAlien.png", initialLocation, new Size(60, 70));
         alienList.add(this);
         this.worldDestroyers = worldDestroyers;
     }
@@ -63,7 +63,7 @@ public class StrongEnemy extends Enemy implements Collided {
 
     public void goToGameOverScene() {
         if (StrongEnemy.getAliens().isEmpty() && AlienEnemy.getAliens().isEmpty()) {
-            worldDestroyers.setActiveScene(ID);
+            worldDestroyers.setActiveScene(3);
         }
     }
 }

@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
+import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.hanyaeger.tutorial.WorldDestroyers;
 import com.github.hanyaeger.tutorial.entities.Tank;
@@ -12,14 +13,15 @@ import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
-public class Door extends DynamicSpriteEntity implements KeyListener, Collided {
+public class Door extends DynamicSpriteEntity implements Collided {
     private WorldDestroyers worldDestroyers;
     private List<Door> doors = new ArrayList<>();
+    private List<String> sounds = new ArrayList<>();
     private List<Coordinate2D> listLocation = new ArrayList<>();
 
-    Boolean doorState = false;
     private int id;
 
     public Door(Coordinate2D location, int id) {
@@ -27,6 +29,8 @@ public class Door extends DynamicSpriteEntity implements KeyListener, Collided {
         this.id = id;
         listLocation.add(location);
         doors.add(this);
+        sounds.add("audio/voice_line_1.mp3");
+        sounds.add("audio/voice_line_2.mp3");
     }
 
     public List<Door> getDoors(){
@@ -38,30 +42,16 @@ public class Door extends DynamicSpriteEntity implements KeyListener, Collided {
         Coordinate2D coordinate1 = new Coordinate2D(650, 510);
         Coordinate2D coordinate2 = new Coordinate2D(100, 510);
         if (collidingObject instanceof Tank tank) {
-            if (id == 1) {
-                tank.setAnchorLocation(coordinate1);
-            } else if (id == 2) {
-                tank.setAnchorLocation(coordinate2);
+                System.out.println("has not touched");
+                if (tank.getKeyCollect()){
+                    if (id == 1) {
+                        tank.setAnchorLocation(coordinate1);
+                    } else if (id == 2) {
+                        tank.setAnchorLocation(coordinate2);
+                    }
+                }
             }
         }
-    }
-
-    @Override
-    public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
-//        if (pressedKeys.contains(KeyCode.E) && !doorState) {
-//            setMotion(3, 180);
-////            if (coordinate2D.y <= -200) {
-////                setSpeed(0);
-////                doorState = true;
-////            }
-//        } else {
-//            setMotion(3, 0);
-////            if (coordinate2D.y >= 300) {
-////                setSpeed(0);
-////                doorState = false;
-////            }
-//        }
-    }
 
     public Coordinate2D getLocation(){
         return getAnchorLocation();

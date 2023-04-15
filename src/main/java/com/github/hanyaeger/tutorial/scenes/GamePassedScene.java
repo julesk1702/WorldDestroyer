@@ -1,21 +1,17 @@
 package com.github.hanyaeger.tutorial.scenes;
 
-import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.YaegerGame;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import com.github.hanyaeger.tutorial.WorldDestroyers;
 import com.github.hanyaeger.tutorial.buttons.HomeButton;
-import com.github.hanyaeger.tutorial.buttons.RestartButton;
-import com.github.hanyaeger.tutorial.buttons.StartButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class GameOverScene extends StaticScene {
+public class GamePassedScene extends StaticScene {
     private WorldDestroyers worldDestroyers;
-    public GameOverScene(WorldDestroyers worldDestroyers) {
+    public GamePassedScene(WorldDestroyers worldDestroyers) {
         this.worldDestroyers = worldDestroyers;
     }
 
@@ -31,7 +27,7 @@ public class GameOverScene extends StaticScene {
         int yPositie = 100;
         var endGame = new TextEntity(
                 new Coordinate2D(5, 200),
-                "Sadly you died. Try again later!"
+                "Congratulations! You have destroyed the invasion!"
         );
         endGame.setFill(Color.WHITE);
         endGame.setFont(Font.font("Roboto", FontWeight.BOLD, 30));

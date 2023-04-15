@@ -8,13 +8,21 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.tutorial.entities.Bullet;
 
-public class DamageBoost extends DynamicSpriteEntity implements Collided, PowerUp {
+public class ShootThroughWallBoost extends DynamicSpriteEntity implements Collided, PowerUp {
     public static final int WIDTH = 50;
     public static final int HEIGHT = 50;
     int damage = 0;
-    public DamageBoost(Coordinate2D initialLocation) {
+
+    public ShootThroughWallBoost(Coordinate2D initialLocation) {
         super("sprites/boost.png", initialLocation, new Size(WIDTH, HEIGHT));
         setBoost(2);
+    }
+
+    @Override
+    public void activate(Bullet bullet){
+        if (bullet.getShootThroughWall()){
+            bullet.setShootThroughWall(false);
+        }
     }
 
     @Override
@@ -23,10 +31,12 @@ public class DamageBoost extends DynamicSpriteEntity implements Collided, PowerU
         var explosion = new SoundClip("audio/explosion3.mp3");
         if (collidingObject instanceof Bullet bullet) {
             checkBoolean = bullet.getIsPlayerBullet();
+            bullet.setShootThroughWall(true);
             if (checkBoolean) {
                 explosion.play();
                 bullet.remove();
                 remove();
+                activate(bullet);
             }
         }
     }
@@ -35,6 +45,8 @@ public class DamageBoost extends DynamicSpriteEntity implements Collided, PowerU
     public void setBoost(int boost) {
         damage = boost;
     }
+
+
 
     public int getBoost(){
         return damage;

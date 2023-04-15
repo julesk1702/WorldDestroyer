@@ -21,7 +21,7 @@ public class AlienEnemy extends Enemy implements Collided {
 
     private WorldDestroyers worldDestroyers;
 
-    private int health = ID;
+    private int health = 2;
 
     public AlienEnemy(Coordinate2D initialLocation, WorldDestroyers worldDestroyers) {
         super("sprites/alien.png", initialLocation, new Size(WIDTH, HEIGHT));
@@ -62,7 +62,7 @@ public class AlienEnemy extends Enemy implements Collided {
 
     public void goToGameOverScene() {
         if (AlienEnemy.getAliens().isEmpty() && StrongEnemy.getAliens().isEmpty()) {
-            worldDestroyers.setActiveScene(ID);
+            worldDestroyers.setActiveScene(3);
         }
     }
 

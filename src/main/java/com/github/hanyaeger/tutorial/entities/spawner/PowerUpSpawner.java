@@ -3,7 +3,7 @@ package com.github.hanyaeger.tutorial.entities.spawner;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
 import com.github.hanyaeger.tutorial.entities.Enemies.AlienEnemy;
-import com.github.hanyaeger.tutorial.entities.PowerUps.DamageBoost;
+import com.github.hanyaeger.tutorial.entities.PowerUps.ShootThroughWallBoost;
 import com.github.hanyaeger.tutorial.entities.Enemies.StrongEnemy;
 
 import java.util.Random;
@@ -23,7 +23,7 @@ public class PowerUpSpawner extends EntitySpawner {
                 newLocation = new Coordinate2D(randomXlocation(), randomYlocation());
             } while (isTooCloseToanotherAlien(newLocation));
 
-            spawn(new DamageBoost(new Coordinate2D(randomXlocation(), randomYlocation())));
+            spawn(new ShootThroughWallBoost(new Coordinate2D(randomXlocation(), randomYlocation())));
             powerUps++;
         }
     }

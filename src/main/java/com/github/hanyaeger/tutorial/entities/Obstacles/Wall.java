@@ -24,11 +24,12 @@ public class Wall extends DynamicSpriteEntity implements Collided {
     @Override
     public void onCollision(Collider collidingObject) {
         if (collidingObject instanceof Bullet bullet) {
-            health = health - 1;
-            bullet.remove();
-            if (health <= 0) {
-               remove();
-            }
+            System.out.println(bullet.getShootThroughWall());
+                health = health - 1;
+                bullet.remove();
+                if (health <= 0) {
+                    remove();
+                }
         }
     }
 }

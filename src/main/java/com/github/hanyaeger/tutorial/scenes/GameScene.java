@@ -9,6 +9,7 @@ import com.github.hanyaeger.tutorial.WorldDestroyers;
 import com.github.hanyaeger.tutorial.entities.*;
 import com.github.hanyaeger.tutorial.entities.Obstacles.Exit;
 import com.github.hanyaeger.tutorial.entities.Obstacles.Wall;
+import com.github.hanyaeger.tutorial.entities.PowerUps.TeleportPowerUp;
 import com.github.hanyaeger.tutorial.entities.spawner.AlienSpawner;
 import com.github.hanyaeger.tutorial.entities.spawner.BulletSpawner;
 import com.github.hanyaeger.tutorial.entities.spawner.DoorSpawner;
@@ -56,6 +57,9 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer, K
 
         tank = new Tank(new Coordinate2D(100, 510), health, exit, worldDestroyers);
         addEntity(tank);
+
+        var teleportKey = new TeleportPowerUp(2, tank, new Coordinate2D(100, 150));
+        addEntity(teleportKey);
 
         for (int i = 0; i < 3; i++) {
             List<Wall> walls = new ArrayList<>();

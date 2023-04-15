@@ -34,7 +34,7 @@ public class AlienSpawner extends EntitySpawner {
 
             Enemy normalEnemy = new AlienEnemy(newLocation, worldDestroyers);
 
-            normalEnemy.setHealth(1);
+            normalEnemy.setHealth(2);
             spawn(normalEnemy);
             alienCount++;
         }
@@ -46,7 +46,7 @@ public class AlienSpawner extends EntitySpawner {
 
             Enemy strongEnemy = new StrongEnemy(newLocation, worldDestroyers);
 
-            strongEnemy.setHealth(2);
+            strongEnemy.setHealth(4);
             spawn(strongEnemy);
             tankAliens++;
         }
