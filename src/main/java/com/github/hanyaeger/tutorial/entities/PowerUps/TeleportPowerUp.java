@@ -15,7 +15,7 @@ public class TeleportPowerUp extends DynamicSpriteEntity implements PowerUp, Col
     private Tank tank;
 
     public TeleportPowerUp(int boost, Tank tank, Coordinate2D initialLocation) {
-        super("sprites/boost.png", initialLocation, new Size(50, 50));
+        super("sprites/key.png", initialLocation, new Size(60, 60));
         this.boost = boost;
         this.tank = tank;
     }

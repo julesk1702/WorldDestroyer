@@ -37,6 +37,7 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer, K
     @Override
     public void setupScene() {
         setBackgroundAudio("audio/gameMusic.mp3");
+        setBackgroundAudioVolume(0.1);
         setBackgroundImage("backgrounds/backgroundGame.png");
     }
 
@@ -58,7 +59,7 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer, K
         tank = new Tank(new Coordinate2D(100, 510), health, exit, worldDestroyers);
         addEntity(tank);
 
-        var teleportKey = new TeleportPowerUp(2, tank, new Coordinate2D(100, 150));
+        var teleportKey = new TeleportPowerUp(2, tank, new Coordinate2D(50, 150));
         addEntity(teleportKey);
 
         for (int i = 0; i < 3; i++) {
