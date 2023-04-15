@@ -10,6 +10,7 @@ import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.hanyaeger.tutorial.WorldDestroyers;
+import com.github.hanyaeger.tutorial.entities.Obstacles.Exit;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import com.github.hanyaeger.tutorial.entities.text.ScoreText;
 import javafx.scene.input.KeyCode;

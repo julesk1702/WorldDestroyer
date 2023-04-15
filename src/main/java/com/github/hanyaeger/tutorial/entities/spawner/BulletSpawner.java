@@ -1,16 +1,11 @@
 package com.github.hanyaeger.tutorial.entities.spawner;
 
-import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
-import com.github.hanyaeger.api.userinput.KeyListener;
-import com.github.hanyaeger.tutorial.entities.AlienEnemy;
+import com.github.hanyaeger.tutorial.entities.Enemies.AlienEnemy;
 import com.github.hanyaeger.tutorial.entities.Bullet;
-import com.github.hanyaeger.tutorial.entities.text.ScoreText;
-import javafx.scene.input.KeyCode;
 
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 public class BulletSpawner extends EntitySpawner{
     public static final int INTERVAL_IN_MS = 2000;

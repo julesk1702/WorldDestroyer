@@ -2,9 +2,9 @@ package com.github.hanyaeger.tutorial.entities.spawner;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
-import com.github.hanyaeger.tutorial.entities.AlienEnemy;
-import com.github.hanyaeger.tutorial.entities.DamageBoost;
-import com.github.hanyaeger.tutorial.entities.StrongEnemy;
+import com.github.hanyaeger.tutorial.entities.Enemies.AlienEnemy;
+import com.github.hanyaeger.tutorial.entities.PowerUps.DamageBoost;
+import com.github.hanyaeger.tutorial.entities.Enemies.StrongEnemy;
 
 import java.util.Random;
 

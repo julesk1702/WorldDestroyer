@@ -1,15 +1,14 @@
 package com.github.hanyaeger.tutorial.scenes;
 
-import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
-import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.KeyListener;
-import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.tutorial.WorldDestroyers;
 import com.github.hanyaeger.tutorial.entities.*;
+import com.github.hanyaeger.tutorial.entities.Obstacles.Exit;
+import com.github.hanyaeger.tutorial.entities.Obstacles.Wall;
 import com.github.hanyaeger.tutorial.entities.spawner.AlienSpawner;
 import com.github.hanyaeger.tutorial.entities.spawner.BulletSpawner;
 import com.github.hanyaeger.tutorial.entities.spawner.DoorSpawner;

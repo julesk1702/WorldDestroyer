@@ -2,9 +2,7 @@ package com.github.hanyaeger.tutorial.entities.spawner;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
-import com.github.hanyaeger.tutorial.entities.Door;
-
-import java.util.Random;
+import com.github.hanyaeger.tutorial.entities.Obstacles.Door;
 
 public class DoorSpawner extends EntitySpawner {
     private int MAX_DOORS = 0;
