@@ -12,21 +12,23 @@ import java.util.Random;
 public class AlienSpawner extends EntitySpawner {
     private double sceneWidth;
     private double sceneHeight;
-
-    private final int MAX_ALIENS = 20;
-    private final int MAX_TANK_ALIENS = 4;
+    private int max_aliens;
+    private int max_tank_aliens;
     private int tankAliens = 0;
     private int alienCount = 0;
     private WorldDestroyers worldDestroyers;
     public AlienSpawner(double sceneWidth, double sceneHeight, WorldDestroyers worldDestroyers) {
         super(1);
+        Random random = new Random();
         this.sceneWidth = sceneWidth;
         this.sceneHeight = sceneHeight;
         this.worldDestroyers = worldDestroyers;
+        max_aliens = random.nextInt(10) + 15;
+        max_tank_aliens = random.nextInt(6) + 5;
     }
     @Override
     protected void spawnEntities() {
-        if (alienCount < MAX_ALIENS) {
+        if (alienCount < max_aliens) {
             Coordinate2D newLocation;
             do {
                 newLocation = new Coordinate2D(randomXlocation(), randomYlocation());
@@ -38,7 +40,7 @@ public class AlienSpawner extends EntitySpawner {
             spawn(normalEnemy);
             alienCount++;
         }
-        if (tankAliens < MAX_TANK_ALIENS){
+        if (tankAliens < max_tank_aliens){
             Coordinate2D newLocation;
             do {
                 newLocation = new Coordinate2D(randomXlocation(), randomYlocation());

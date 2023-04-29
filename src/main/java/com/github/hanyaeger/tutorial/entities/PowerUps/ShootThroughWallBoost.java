@@ -7,6 +7,7 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.tutorial.entities.Bullet;
+import com.github.hanyaeger.tutorial.entities.Obstacles.Wall;
 
 public class ShootThroughWallBoost extends DynamicSpriteEntity implements Collided, PowerUp {
     public static final int WIDTH = 50;
@@ -21,6 +22,9 @@ public class ShootThroughWallBoost extends DynamicSpriteEntity implements Collid
     @Override
     public void activate(Bullet bullet){
         if (bullet.getShootThroughWall()){
+            for (Wall wall : Wall.getWalls()){
+                wall.setShootThroughWall(true, 500);
+            }
             bullet.setShootThroughWall(false);
         }
     }

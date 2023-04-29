@@ -87,10 +87,4 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer, K
             addEntity(new Bullet("sprites/bullet.png" , new Coordinate2D(tank.getAnchorLocation()), true));
         }
     }
-    private void setScore(ScoreText score) {
-        scoreText = score;
-    }
-    private ScoreText getScore() {
-        return scoreText;
-    }
 }

@@ -12,7 +12,7 @@ public class PowerUpSpawner extends EntitySpawner {
     private final int MAX_POWERUPS = 3;
     private int powerUps = 0;
     public PowerUpSpawner() {
-        super(10000);
+        super(5000);
     }
 
     @Override
