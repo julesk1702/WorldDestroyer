@@ -13,12 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Wall extends DynamicSpriteEntity implements Collided, UpdateExposer {
-    private WorldDestroyers worldDestroyers;
-
     private int health = 4;
     private int remainingTime = 0;
     boolean shootThroughWalls = false;
-
     private static List<Wall> walls = new ArrayList<>();
 
     public Wall(Coordinate2D location) {

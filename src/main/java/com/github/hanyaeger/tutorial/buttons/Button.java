@@ -12,20 +12,19 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class HomeButton extends TextEntity implements MouseEnterListener, MouseExitListener, MouseButtonPressedListener {
+public class Button extends TextEntity implements MouseEnterListener, MouseExitListener, MouseButtonPressedListener {
+    public final int SIZE = 20;
+    private final WorldDestroyers worldDestroyers;
+    private final int sceneID;
 
-    public static final int SIZE = 30;
-    public static final int ID = 0;
-    private WorldDestroyers worldDestroyers;
-
-
-    public HomeButton(Coordinate2D initialLocation, WorldDestroyers worldDestroyers) {
-        super(initialLocation, "Go to Home");
+    public Button(Coordinate2D initialLocation, WorldDestroyers worldDestroyers, String text, int sceneID) {
+        super(initialLocation, text);
         setFill(Color.WHITE);
         setFont(Font.font("Roboto", FontWeight.BOLD, SIZE));
-
         this.worldDestroyers = worldDestroyers;
+        this.sceneID = sceneID;
     }
+
     @Override
     public void onMouseEntered() {
         setFill(Color.LIGHTGRAY);
@@ -40,6 +39,6 @@ public class HomeButton extends TextEntity implements MouseEnterListener, MouseE
 
     @Override
     public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
-        worldDestroyers.setActiveScene(ID);
+        worldDestroyers.setActiveScene(sceneID);
     }
 }

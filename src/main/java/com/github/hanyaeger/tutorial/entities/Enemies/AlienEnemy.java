@@ -12,13 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AlienEnemy extends Enemy implements Collided {
-
-    public static final int ID = 2;
-    public static final int DEAD = 0;
+    public final int DEAD = 0;
     public static final int WIDTH = 50;
     public static final int HEIGHT = 60;
     private static List<AlienEnemy> aliens = new ArrayList<>();
-
+    private boolean isPlayerBullet = false;
     private WorldDestroyers worldDestroyers;
 
     private int health = 2;
@@ -35,13 +33,12 @@ public class AlienEnemy extends Enemy implements Collided {
 
     @Override
     public void onCollision(Collider collidingObject) {
-        boolean checkBoolean = false;
+
         //System.out.println("Collision alien");
         var explosion = new SoundClip("audio/explosion2.mp3");
         if (collidingObject instanceof Bullet bullet) {
-            checkBoolean = bullet.getIsPlayerBullet();
-
-            if (checkBoolean) {
+            isPlayerBullet = bullet.getIsPlayerBullet();
+            if (isPlayerBullet) {
                 health--;
                 explosion.play();
                 bullet.remove();

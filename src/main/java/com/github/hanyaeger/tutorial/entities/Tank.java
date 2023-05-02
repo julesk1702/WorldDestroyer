@@ -12,20 +12,16 @@ import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.hanyaeger.tutorial.WorldDestroyers;
 import com.github.hanyaeger.tutorial.entities.Obstacles.Exit;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
-import com.github.hanyaeger.tutorial.entities.text.ScoreText;
 import javafx.scene.input.KeyCode;
 
 import java.util.Set;
 
 public class Tank extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Collided, Collider {
     private WorldDestroyers worldDestroyers;
-    private ScoreText scoreText;
     private HealthText healthText;
-    boolean checkBoolean = false;
+    boolean isBulletPlayer = false;
     boolean keyUnlocked = false;
-    boolean gameOver = false;
     private int health = 7;
-    private int score = 0;
     private Exit exit;
     boolean isOverExit = false;
 
@@ -63,7 +59,6 @@ public class Tank extends DynamicSpriteEntity implements KeyListener, SceneBorde
         if (border.equals(SceneBorder.RIGHT)) {
             setSpeed(0);
             setCurrentFrameIndex(2);
-
         }
     }
 
@@ -81,12 +76,10 @@ public class Tank extends DynamicSpriteEntity implements KeyListener, SceneBorde
 
     @Override
     public void onCollision(Collider collidingObject) {
-        //System.out.println("Collision alien");
         var explosion = new SoundClip("audio/explosion.mp3");
         if (collidingObject instanceof Bullet bullet) {
-            checkBoolean = bullet.getIsPlayerBullet();
-
-            if (!checkBoolean) {
+            isBulletPlayer = bullet.getIsPlayerBullet();
+            if (!isBulletPlayer) {
                 healthText.setHealth(--health);
                 explosion.play();
                 bullet.remove();

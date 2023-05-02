@@ -8,11 +8,10 @@ import java.util.List;
 import java.util.Random;
 
 public class BulletSpawner extends EntitySpawner{
-    public static final int INTERVAL_IN_MS = 2000;
+    private static final int INTERVAL_IN_MS = 2000;
     private double sceneWidth;
     private double sceneHeight;
     private boolean keyPressed = false;
-    private int amountOfBullets = 0;
     private long previousTime;
     private boolean shootBullet = false;
 
@@ -33,8 +32,8 @@ public class BulletSpawner extends EntitySpawner{
             int randomIndex = random.nextInt(aliens.size());
             AlienEnemy alien = aliens.get(randomIndex);
             if (shootBullet) {
-                spawn(new Bullet("sprites/bullet2.png", alien.getAnchorLocation(), false)); // spawn a bullet
-                shootBullet = false; // increase the amount of bullets
+                spawn(new Bullet("sprites/bullet2.png", alien.getAnchorLocation(), false));
+                shootBullet = false;
             }
         }
     }

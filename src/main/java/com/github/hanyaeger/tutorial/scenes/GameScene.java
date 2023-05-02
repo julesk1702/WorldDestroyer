@@ -15,7 +15,6 @@ import com.github.hanyaeger.tutorial.entities.spawner.BulletSpawner;
 import com.github.hanyaeger.tutorial.entities.spawner.DoorSpawner;
 import com.github.hanyaeger.tutorial.entities.spawner.PowerUpSpawner;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
-import com.github.hanyaeger.tutorial.entities.text.ScoreText;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -28,7 +27,6 @@ import java.util.Set;
 public class GameScene extends DynamicScene implements EntitySpawnerContainer, KeyListener {
     Tank tank;
     private WorldDestroyers worldDestroyers;
-    private ScoreText scoreText;
 
     public GameScene(WorldDestroyers worldDestroyers) {
        this.worldDestroyers = worldDestroyers;
@@ -59,7 +57,7 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer, K
         tank = new Tank(new Coordinate2D(100, 510), health, exit, worldDestroyers);
         addEntity(tank);
 
-        var teleportKey = new TeleportPowerUp(2, tank, new Coordinate2D(50, 150));
+        var teleportKey = new TeleportPowerUp(tank, new Coordinate2D(50, 150));
         addEntity(teleportKey);
 
         for (int i = 0; i < 3; i++) {

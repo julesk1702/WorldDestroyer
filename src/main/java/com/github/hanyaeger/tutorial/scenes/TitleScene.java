@@ -5,7 +5,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import com.github.hanyaeger.tutorial.WorldDestroyers;
-import com.github.hanyaeger.tutorial.buttons.StartButton;
+import com.github.hanyaeger.tutorial.buttons.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -37,8 +37,8 @@ public class TitleScene extends StaticScene {
 
         int yPositionButton = 50;
         int xPositionButton = 30;
-        var startButton = new StartButton(
-                new Coordinate2D(getWidth() / 2 - xPositionButton, getHeight() / 2 + yPositionButton), worldDestroyers
+        var startButton = new Button(
+                new Coordinate2D(getWidth() / 2 - xPositionButton, getHeight() / 2 + yPositionButton), worldDestroyers, "Start Game", 1
         );
         addEntity(startButton);
     }

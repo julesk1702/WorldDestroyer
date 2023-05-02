@@ -12,16 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StrongEnemy extends Enemy implements Collided {
-    public final int WIDTH = 60;
-    public final int HEIGHT = 70;
-    public final int DEAD = 0;
-    public final int ID = 2;
+    public static final int WIDTH = 60;
+    public static final int HEIGHT = 70;
+    private boolean isPlayerBullet = false;
+    public int DEAD = 0;
     private int health;
     private WorldDestroyers worldDestroyers;
-
     private static List<StrongEnemy> alienList = new ArrayList<>();
+    
     public StrongEnemy(Coordinate2D initialLocation, WorldDestroyers worldDestroyers) {
-        super("sprites/notAlien.png", initialLocation, new Size(60, 70));
+        super("sprites/notAlien.png", initialLocation, new Size(WIDTH, HEIGHT));
         alienList.add(this);
         this.worldDestroyers = worldDestroyers;
     }
@@ -36,13 +36,12 @@ public class StrongEnemy extends Enemy implements Collided {
 
     @Override
     public void onCollision(Collider collidingObject) {
-        boolean checkBoolean = false;
+        
         //System.out.println("Collision alien");
         var explosion = new SoundClip("audio/explosion2.mp3");
         if (collidingObject instanceof Bullet bullet) {
-            checkBoolean = bullet.getIsPlayerBullet();
-
-            if (checkBoolean) {
+            isPlayerBullet = bullet.getIsPlayerBullet();
+            if (isPlayerBullet) {
                 health--;
                 explosion.play();
                 bullet.remove();

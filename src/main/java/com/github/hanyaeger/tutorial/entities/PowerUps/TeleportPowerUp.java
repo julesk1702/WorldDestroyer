@@ -10,19 +10,11 @@ import com.github.hanyaeger.tutorial.entities.Bullet;
 import com.github.hanyaeger.tutorial.entities.Tank;
 
 public class TeleportPowerUp extends DynamicSpriteEntity implements PowerUp, Collided {
-
-    private int boost;
     private Tank tank;
 
-    public TeleportPowerUp(int boost, Tank tank, Coordinate2D initialLocation) {
+    public TeleportPowerUp(Tank tank, Coordinate2D initialLocation) {
         super("sprites/key.png", initialLocation, new Size(60, 60));
-        this.boost = boost;
         this.tank = tank;
-    }
-
-    @Override
-    public void setBoost(int boost) {
-        this.boost = boost;
     }
 
     @Override
