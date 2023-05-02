@@ -1,11 +1,14 @@
-# Yaeger tutorial: Creating Waterworld
+# WorldDestroyer
+WorldDestroyer is a game where you play as a tank to destroy the alien invasion. Along the way you can use certain power ups to give you an advantage.
 
-This repository contains a tutorial in which you will create a simple game called Waterworld. We start of with an empty
-project that does not contain any code. Only the assets and the project settings are provided. Step-by-step you will be
-guided in the creation of simple game, and in doing so, become familiar with many of the features of Yaeger.
+# Features
+* Intuitive gameplay mechanics
+* Randomly generated enemy ships and power up locations for a unique experience each time you play
+* Beautifully sound effects
 
-![Waterworld](docs/images/game/game.png)
+# Technologies Used
+* Java 20
+* Yaeger Engine
 
-[Dive into the tutorial](https://han-yaeger.github.io/yaeger-tutorial/)
-
-
+# Credits
+This game was created by Jules K. as a school project. All graphics and sound effects were sourced from royalty-free libraries.
