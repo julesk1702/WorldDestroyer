@@ -11,7 +11,6 @@ public class BulletSpawner extends EntitySpawner{
     private static final int INTERVAL_IN_MS = 2000;
     private double sceneWidth;
     private double sceneHeight;
-    private boolean keyPressed = false;
     private long previousTime;
     private boolean shootBullet = false;
 

@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bullet extends DynamicSpriteEntity implements Collider {
-    public static final int WIDTH = 30;
-    public static final int HEIGHT = 30;
-    public final int SPEED = 5;
-    public final double DIRECTION_DOWN = 0d;
-    public final double DIRECTION_UP = 180d;
+    private static final int WIDTH = 30;
+    private static final int HEIGHT = 30;
+    private final int SPEED = 5;
+    private final double DIRECTION_DOWN = 0d;
+    private final double DIRECTION_UP = 180d;
     private List<Bullet> bullets = new ArrayList<>();
     private boolean isPlayerBullet;
     private boolean keyUnlocked;

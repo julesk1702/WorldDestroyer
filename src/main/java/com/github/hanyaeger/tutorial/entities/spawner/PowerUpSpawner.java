@@ -9,10 +9,12 @@ import com.github.hanyaeger.tutorial.entities.Enemies.StrongEnemy;
 import java.util.Random;
 
 public class PowerUpSpawner extends EntitySpawner {
+    private static final int INTERVAL = 5000;
+    public final int SIZE = 60;
     private final int MAX_POWERUPS = 3;
     private int powerUps = 0;
     public PowerUpSpawner() {
-        super(5000);
+        super(INTERVAL);
     }
 
     @Override
@@ -31,7 +33,7 @@ public class PowerUpSpawner extends EntitySpawner {
     private boolean isTooCloseToanotherAlien(Coordinate2D newLocation) {
         for (AlienEnemy alien : AlienEnemy.getAliens()) {
             for (StrongEnemy strongEnemy : StrongEnemy.getAliens()) {
-                if (alien.getAnchorLocation().distance(newLocation) < 60 || strongEnemy.getAnchorLocation().distance(newLocation) < 60) {
+                if (alien.getAnchorLocation().distance(newLocation) < SIZE || strongEnemy.getAnchorLocation().distance(newLocation) < SIZE) {
                     return true;
                 }
             }
@@ -40,12 +42,10 @@ public class PowerUpSpawner extends EntitySpawner {
     }
 
     private double randomXlocation() {
-        double x = new Random().nextInt(601) + 100;
-        return x;
+        return new Random().nextInt(601) + 100;
     }
 
     private double randomYlocation(){
-        double y = new Random().nextInt(201) + 100;
-        return y;
+        return new Random().nextInt(201) + 100;
     }
 }

@@ -7,10 +7,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class HealthText extends TextEntity {
+
+    private final int FONT_SIZE = 20;
+
     public HealthText(Coordinate2D initialLocation) {
         super(initialLocation);
 
-        setFont(Font.font("Arial", FontWeight.NORMAL, 20));
+        setFont(Font.font("Arial", FontWeight.NORMAL, FONT_SIZE));
         setFill(Color.WHITE);
     }
 

@@ -10,8 +10,9 @@ import com.github.hanyaeger.tutorial.entities.Bullet;
 import com.github.hanyaeger.tutorial.entities.Obstacles.Wall;
 
 public class ShootThroughWallBoost extends DynamicSpriteEntity implements Collided, PowerUp {
-    public static final int WIDTH = 50;
-    public static final int HEIGHT = 50;
+    private static final int WIDTH = 50;
+    private static final int HEIGHT = 50;
+    private final int DURATION = 500;
     private boolean isPlayerBullet = false;
 
     public ShootThroughWallBoost(Coordinate2D initialLocation) {
@@ -22,7 +23,7 @@ public class ShootThroughWallBoost extends DynamicSpriteEntity implements Collid
     public void activate(Bullet bullet){
         if (bullet.getShootThroughWall()){
             for (Wall wall : Wall.getWalls()){
-                wall.setShootThroughWall(true, 500);
+                wall.setShootThroughWall(true, DURATION);
             }
             bullet.setShootThroughWall(false);
         }

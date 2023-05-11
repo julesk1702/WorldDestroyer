@@ -19,7 +19,6 @@ public class AlienSpawner extends EntitySpawner {
     private WorldDestroyers worldDestroyers;
     public AlienSpawner(double sceneWidth, double sceneHeight, WorldDestroyers worldDestroyers) {
         super(1);
-        Random random = new Random();
         this.sceneWidth = sceneWidth;
         this.sceneHeight = sceneHeight;
         this.worldDestroyers = worldDestroyers;
@@ -66,12 +65,10 @@ public class AlienSpawner extends EntitySpawner {
     }
 
     private double randomXlocation() {
-        double x = new Random().nextInt(601) + 100;
-        return x;
+        return new Random().nextInt(601) + 100;
     }
 
     private double randomYlocation(){
-        double y = new Random().nextInt(201) + 100;
-        return y;
+        return new Random().nextInt(201) + 100;
     }
 }

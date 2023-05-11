@@ -17,6 +17,9 @@ import javafx.scene.input.KeyCode;
 import java.util.Set;
 
 public class Tank extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Collided, Collider {
+    private final double DIRECTION_RIGHT = 90d;
+    private final double DIRECTION_LEFT = 270d;
+    private final int SPEED = 3;
     private WorldDestroyers worldDestroyers;
     private HealthText healthText;
     boolean isBulletPlayer = false;
@@ -36,11 +39,12 @@ public class Tank extends DynamicSpriteEntity implements KeyListener, SceneBorde
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if (pressedKeys.contains(KeyCode.LEFT)) {
-            setMotion(3, 270d);
+            setMotion(SPEED, DIRECTION_LEFT);
             setCurrentFrameIndex(2);
         } else if (pressedKeys.contains(KeyCode.RIGHT)) {
-            setMotion(3, 90d);
+            setMotion(SPEED, DIRECTION_RIGHT);
             setCurrentFrameIndex(1);
+
         } else if (pressedKeys.isEmpty()){
             setSpeed(0);
         }
