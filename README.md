@@ -11,4 +11,4 @@ WorldDestroyer is a game where you play as a tank to destroy the alien invasion.
 * Yaeger Engine
 
 # Credits
-This game was created by Jules K. and Christiaan Z. as a school project. All graphics and sound effects were sourced from royalty-free libraries.
+This game was created by Jules K. as a school project. All graphics and sound effects were sourced from royalty-free libraries.
